@@ -1,10 +1,10 @@
 'use strict';
 
-module.exports = function(project) {
-    project.getProjectbyprojectname = function(projects, callback) {
+module.exports = function(admin) {
+    admin.getadminBylevel = function(levels, callback) {
         new Promise(function(resolve, reject) {
                 // find name
-          project.find({where: {nama_project: {like: projects}}}, function(err, result) {
+          admin.find({where: {level: {like: levels}}}, function(err, result) {
             if (err) reject(err);
             if (result === null) {
               err = new Error('Tidak Ditemukan');
@@ -20,17 +20,17 @@ module.exports = function(project) {
           callback(err);
         });
       };
-      project.remoteMethod(
-            'getProjectbyprojectname',
+      admin.remoteMethod(
+            'getadminBylevel',
         {
-          description: 'get project by nama',
+          description: 'get admin by level',
           accepts: [
-                    {arg: 'nama', type: 'string'},
+                    {arg: 'LEVEL', type: 'string'},
           ],
           returns: {
             arg: 'res', type: 'object', root: true,
           },
-          http: {path: '/getProjectbyprojectname', verb: 'get'},
+          http: {path: '/getAdminBylevel', verb: 'get'},
         }
         );
 };

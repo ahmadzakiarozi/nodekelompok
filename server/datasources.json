@@ -2,5 +2,13 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mongodb":{
+    "database": "databaseku",
+    "name": "mongodb",
+    "connector": "mongodb",
+    "extended_operator":true,
+    "allowExtendedOperators":true
   }
+
 }
